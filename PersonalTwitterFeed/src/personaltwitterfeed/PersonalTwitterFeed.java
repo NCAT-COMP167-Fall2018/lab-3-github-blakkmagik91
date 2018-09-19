@@ -36,15 +36,9 @@ public class PersonalTwitterFeed {
         int numTweets = 0;
         
         while(numTweets < (MAX_NUMBER_TWEETS - 1)) {
-            tweets[numTweets] = keyboard.nextLine();
-            numTweets++;
-            tweetTimes[n]=getCurrentTimeStamp();
+            newTweet(tweets, tweetTimes,numTweets,n, tweeterName);
             n++;
-            System.out.println(tweeterName + "'s Personal Twitter Feed:");
-            for(int i = 0; i < numTweets; i++) {
-                
-                System.out.println("- " + tweets[i]+" "+tweetTimes[i]);
-            }
+            numTweets++;
             
             System.out.println();
             System.out.println();
@@ -64,5 +58,15 @@ SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 String date = simpleDateFormat.format(new Date());
 return date;
     }
+public static void newTweet(String[] timeline, String[] times, int nT, int n, String name){
+    Scanner keyboard = new Scanner(System.in);
+    timeline[nT] = keyboard.nextLine();
+            times[n]=getCurrentTimeStamp();
+             System.out.println(name + "'s Personal Twitter Feed:");
+            for(int i = 0; i < nT; i++) {
+                
+                System.out.println("- " + timeline[i+1]+" "+times[i]);
+            }
+}
     
 }
