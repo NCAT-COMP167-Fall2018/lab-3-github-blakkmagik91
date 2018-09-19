@@ -25,6 +25,8 @@ public class PersonalTwitterFeed {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Welcome to your personal Twitter!");
         System.out.println("What's your name, tweeter?");
+        String[] tweetTimes=new String[MAX_NUMBER_TWEETS];
+        int n=0;
         
         String tweeterName = keyboard.nextLine();
         
@@ -36,10 +38,12 @@ public class PersonalTwitterFeed {
         while(numTweets < (MAX_NUMBER_TWEETS - 1)) {
             tweets[numTweets] = keyboard.nextLine();
             numTweets++;
-            
+            tweetTimes[n]=getCurrentTimeStamp();
+            n++;
             System.out.println(tweeterName + "'s Personal Twitter Feed:");
             for(int i = 0; i < numTweets; i++) {
-                System.out.println("- " + tweets[i]+getCurrentTimeStamp());
+                
+                System.out.println("- " + tweets[i]+" "+tweetTimes[i]);
             }
             
             System.out.println();
