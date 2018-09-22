@@ -25,6 +25,8 @@ public class PersonalTwitterFeed {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Welcome to your personal Twitter!");
         System.out.println("What's your name, tweeter?");
+        String[] tweetTimes=new String[MAX_NUMBER_TWEETS];
+        int n=0;
         
         String tweeterName = keyboard.nextLine();
         
@@ -34,13 +36,9 @@ public class PersonalTwitterFeed {
         int numTweets = 0;
         
         while(numTweets < (MAX_NUMBER_TWEETS - 1)) {
-            tweets[numTweets] = keyboard.nextLine();
+            newTweet(tweets, tweetTimes,numTweets,n, tweeterName);
+            n++;
             numTweets++;
-            
-            System.out.println(tweeterName + "'s Personal Twitter Feed:");
-            for(int i = 0; i < numTweets; i++) {
-                System.out.println("- " + tweets[i]);
-            }
             
             System.out.println();
             System.out.println();
@@ -53,5 +51,22 @@ public class PersonalTwitterFeed {
         
         System.out.println("Your twitter feed is full");
     }
+    public static String getCurrentTimeStamp(){
+        String pattern = "yyyy-MM-dd HH:mm:ss";
+SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+String date = simpleDateFormat.format(new Date());
+return date;
+    }
+public static void newTweet(String[] timeline, String[] times, int nT, int n, String name){
+    Scanner keyboard = new Scanner(System.in);
+    timeline[nT] = keyboard.nextLine();
+            times[n]=getCurrentTimeStamp();
+             System.out.println(name + "'s Personal Twitter Feed:");
+            for(int i = 0; i < nT; i++) {
+                
+                System.out.println("- " + timeline[i+1]+" "+times[i]);
+            }
+}
     
 }
